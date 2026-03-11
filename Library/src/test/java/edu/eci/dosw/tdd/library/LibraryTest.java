@@ -115,4 +115,38 @@ public class LibraryTest {
     public void shouldNotReturnNullLoan() {
         assertNull(library.returnLoan(null));
     }
+
+    // addBook - no agregar libro con ISBN null
+    @Test
+    public void shouldNotAddBookWithNullIsbn() {
+        Book book = new Book("Clean Code", "Robert Martin", null);
+        assertFalse(library.addBook(book));
+    }
+
+    // loanABook - fecha del préstamo no es nula
+    @Test
+    public void shouldSetLoanDateWhenLoaning() {
+        Book book = new Book("Clean Code", "Robert Martin", "ISBN-001");
+        library.addBook(book);
+        User user = new User();
+        user.setId("U001");
+        user.setName("Juan");
+        library.addUser(user);
+        Loan loan = library.loanABook("U001", "ISBN-001");
+        assertNotNull(loan.getLoanDate());
+    }
+
+    // returnLoan - fecha de retorno no es nula
+    @Test
+    public void shouldSetReturnDateWhenReturning() {
+        Book book = new Book("Clean Code", "Robert Martin", "ISBN-001");
+        library.addBook(book);
+        User user = new User();
+        user.setId("U001");
+        user.setName("Juan");
+        library.addUser(user);
+        Loan loan = library.loanABook("U001", "ISBN-001");
+        Loan returned = library.returnLoan(loan);
+        assertNotNull(returned.getReturnDate());
+    }
 }
