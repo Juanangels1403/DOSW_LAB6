@@ -1,0 +1,6 @@
+edu\eci\dosw\tdd\library\Library.class
+edu\eci\dosw\tdd\library\user\User.class
+edu\eci\dosw\tdd\library\book\Book.class
+edu\eci\dosw\tdd\App.class
+edu\eci\dosw\tdd\library\loan\Loan.class
+edu\eci\dosw\tdd\library\loan\LoanStatus.class
