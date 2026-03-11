@@ -1,0 +1,50 @@
+-------------------------------------------------------------------------------
+Test set: edu.eci.dosw.tdd.library.LibraryTest
+-------------------------------------------------------------------------------
+Tests run: 9, Failures: 3, Errors: 1, Skipped: 0, Time elapsed: 0.018 s <<< FAILURE! -- in edu.eci.dosw.tdd.library.LibraryTest
+edu.eci.dosw.tdd.library.LibraryTest.shouldAddNewBookSuccessfully -- Time elapsed: 0.005 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <true> but was: <false>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertTrue.failNotTrue(AssertTrue.java:63)
+	at org.junit.jupiter.api.AssertTrue.assertTrue(AssertTrue.java:36)
+	at org.junit.jupiter.api.AssertTrue.assertTrue(AssertTrue.java:31)
+	at org.junit.jupiter.api.Assertions.assertTrue(Assertions.java:183)
+	at edu.eci.dosw.tdd.library.LibraryTest.shouldAddNewBookSuccessfully(LibraryTest.java:25)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+
+edu.eci.dosw.tdd.library.LibraryTest.shouldIncrementAmountWhenBookAlreadyExists -- Time elapsed: 0 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <true> but was: <false>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertTrue.failNotTrue(AssertTrue.java:63)
+	at org.junit.jupiter.api.AssertTrue.assertTrue(AssertTrue.java:36)
+	at org.junit.jupiter.api.AssertTrue.assertTrue(AssertTrue.java:31)
+	at org.junit.jupiter.api.Assertions.assertTrue(Assertions.java:183)
+	at edu.eci.dosw.tdd.library.LibraryTest.shouldIncrementAmountWhenBookAlreadyExists(LibraryTest.java:33)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+
+edu.eci.dosw.tdd.library.LibraryTest.shouldReturnLoanSuccessfully -- Time elapsed: 0 s <<< ERROR!
+java.lang.NullPointerException: Cannot invoke "edu.eci.dosw.tdd.library.loan.Loan.getStatus()" because "returned" is null
+	at edu.eci.dosw.tdd.library.LibraryTest.shouldReturnLoanSuccessfully(LibraryTest.java:110)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+
+edu.eci.dosw.tdd.library.LibraryTest.shouldLoanBookSuccessfully -- Time elapsed: 0.001 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: not <null>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:152)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertNotNull.failNull(AssertNotNull.java:49)
+	at org.junit.jupiter.api.AssertNotNull.assertNotNull(AssertNotNull.java:35)
+	at org.junit.jupiter.api.AssertNotNull.assertNotNull(AssertNotNull.java:30)
+	at org.junit.jupiter.api.Assertions.assertNotNull(Assertions.java:304)
+	at edu.eci.dosw.tdd.library.LibraryTest.shouldLoanBookSuccessfully(LibraryTest.java:55)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+

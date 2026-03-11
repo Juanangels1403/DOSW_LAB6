@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.1" name="edu.eci.dosw.tdd.AppTest" time="0.03" tests="1" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.1" name="edu.eci.dosw.tdd.library.LibraryTest" time="0.018" tests="9" errors="1" skipped="0" failures="3">
   <properties>
     <property name="java.specification.version" value="17"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -56,5 +56,59 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="61.0"/>
   </properties>
-  <testcase name="shouldAnswerWithTrue" classname="edu.eci.dosw.tdd.AppTest" time="0.017"/>
+  <testcase name="shouldNotLoanIfUserNotExists" classname="edu.eci.dosw.tdd.library.LibraryTest" time="0.005"/>
+  <testcase name="shouldAddNewBookSuccessfully" classname="edu.eci.dosw.tdd.library.LibraryTest" time="0.005">
+    <failure message="expected: &lt;true&gt; but was: &lt;false&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: expected: <true> but was: <false>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertTrue.failNotTrue(AssertTrue.java:63)
+	at org.junit.jupiter.api.AssertTrue.assertTrue(AssertTrue.java:36)
+	at org.junit.jupiter.api.AssertTrue.assertTrue(AssertTrue.java:31)
+	at org.junit.jupiter.api.Assertions.assertTrue(Assertions.java:183)
+	at edu.eci.dosw.tdd.library.LibraryTest.shouldAddNewBookSuccessfully(LibraryTest.java:25)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+]]></failure>
+  </testcase>
+  <testcase name="shouldIncrementAmountWhenBookAlreadyExists" classname="edu.eci.dosw.tdd.library.LibraryTest" time="0.0">
+    <failure message="expected: &lt;true&gt; but was: &lt;false&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: expected: <true> but was: <false>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertTrue.failNotTrue(AssertTrue.java:63)
+	at org.junit.jupiter.api.AssertTrue.assertTrue(AssertTrue.java:36)
+	at org.junit.jupiter.api.AssertTrue.assertTrue(AssertTrue.java:31)
+	at org.junit.jupiter.api.Assertions.assertTrue(Assertions.java:183)
+	at edu.eci.dosw.tdd.library.LibraryTest.shouldIncrementAmountWhenBookAlreadyExists(LibraryTest.java:33)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+]]></failure>
+  </testcase>
+  <testcase name="shouldNotReturnNullLoan" classname="edu.eci.dosw.tdd.library.LibraryTest" time="0.0"/>
+  <testcase name="shouldReturnLoanSuccessfully" classname="edu.eci.dosw.tdd.library.LibraryTest" time="0.0">
+    <error message="Cannot invoke &quot;edu.eci.dosw.tdd.library.loan.Loan.getStatus()&quot; because &quot;returned&quot; is null" type="java.lang.NullPointerException"><![CDATA[java.lang.NullPointerException: Cannot invoke "edu.eci.dosw.tdd.library.loan.Loan.getStatus()" because "returned" is null
+	at edu.eci.dosw.tdd.library.LibraryTest.shouldReturnLoanSuccessfully(LibraryTest.java:110)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+]]></error>
+  </testcase>
+  <testcase name="shouldNotLoanIfBookNotAvailable" classname="edu.eci.dosw.tdd.library.LibraryTest" time="0.0"/>
+  <testcase name="shouldLoanBookSuccessfully" classname="edu.eci.dosw.tdd.library.LibraryTest" time="0.001">
+    <failure message="expected: not &lt;null&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: expected: not <null>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:152)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertNotNull.failNull(AssertNotNull.java:49)
+	at org.junit.jupiter.api.AssertNotNull.assertNotNull(AssertNotNull.java:35)
+	at org.junit.jupiter.api.AssertNotNull.assertNotNull(AssertNotNull.java:30)
+	at org.junit.jupiter.api.Assertions.assertNotNull(Assertions.java:304)
+	at edu.eci.dosw.tdd.library.LibraryTest.shouldLoanBookSuccessfully(LibraryTest.java:55)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+]]></failure>
+  </testcase>
+  <testcase name="shouldNotLoanSameBookTwiceToSameUser" classname="edu.eci.dosw.tdd.library.LibraryTest" time="0.0"/>
+  <testcase name="shouldNotAddNullBook" classname="edu.eci.dosw.tdd.library.LibraryTest" time="0.0"/>
 </testsuite>
