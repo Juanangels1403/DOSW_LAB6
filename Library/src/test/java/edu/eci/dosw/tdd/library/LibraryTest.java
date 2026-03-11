@@ -149,4 +149,47 @@ public class LibraryTest {
         Loan returned = library.returnLoan(loan);
         assertNotNull(returned.getReturnDate());
     }
+    // addBook - no agregar libro con titulo null
+    @Test
+    public void shouldNotAddBookWithNullTitle() {
+        Book book = new Book(null, "Robert Martin", "ISBN-002");
+        assertFalse(library.addBook(book));
+    }
+
+    // loanABook - cantidad de libros disminuye al prestar
+    @Test
+    public void shouldDecreaseBookAmountWhenLoaned() {
+        Book book = new Book("Clean Code", "Robert Martin", "ISBN-001");
+        library.addBook(book);
+        library.addBook(book);
+        User user = new User();
+        user.setId("U001");
+        user.setName("Juan");
+        library.addUser(user);
+        library.loanABook("U001", "ISBN-001");
+        User user2 = new User();
+        user2.setId("U002");
+        user2.setName("Maria");
+        library.addUser(user2);
+        Loan loan2 = library.loanABook("U002", "ISBN-001");
+        assertNotNull(loan2);
+    }
+
+    // returnLoan - cantidad de libros aumenta al devolver
+    @Test
+    public void shouldIncreaseBookAmountWhenReturned() {
+        Book book = new Book("Clean Code", "Robert Martin", "ISBN-001");
+        library.addBook(book);
+        User user = new User();
+        user.setId("U001");
+        user.setName("Juan");
+        library.addUser(user);
+        Loan loan = library.loanABook("U001", "ISBN-001");
+        library.returnLoan(loan);
+        User user2 = new User();
+        user2.setId("U002");
+        user2.setName("Maria");
+        library.addUser(user2);
+        assertNotNull(library.loanABook("U002", "ISBN-001"));
+    }
 }
