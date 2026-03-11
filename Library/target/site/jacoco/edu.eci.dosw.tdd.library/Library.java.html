@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Library.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Library</a> &gt; <a href="index.source.html" class="el_package">edu.eci.dosw.tdd.library</a> &gt; <span class="el_source">Library.java</span></div><h1>Library.java</h1><pre class="source lang-java linenums">package edu.eci.dosw.tdd.library;
+
+import edu.eci.dosw.tdd.library.book.Book;
+import edu.eci.dosw.tdd.library.loan.Loan;
+import edu.eci.dosw.tdd.library.loan.LoanStatus;
+import edu.eci.dosw.tdd.library.user.User;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+public class Library {
+    private final List&lt;User&gt; users;
+    private final Map&lt;Book, Integer&gt; books;
+    private final List&lt;Loan&gt; loans;
+
+<span class="fc" id="L18">    public Library() {</span>
+<span class="fc" id="L19">        users = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L20">        books = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L21">        loans = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L22">    }</span>
+
+    public boolean addBook(Book book) {
+<span class="fc bfc" id="L25" title="All 8 branches covered.">        if (book == null || book.getIsbn() == null || book.getTittle() == null || book.getAuthor() == null) {</span>
+<span class="fc" id="L26">            return false;</span>
+        }
+<span class="fc" id="L28">        books.put(book, books.getOrDefault(book, 0) + 1);</span>
+<span class="fc" id="L29">        return true;</span>
+    }
+
+    public Loan loanABook(String userId, String isbn) {
+<span class="fc" id="L33">        User user = users.stream().filter(u -&gt; u.getId().equals(userId)).findFirst().orElse(null);</span>
+<span class="fc bfc" id="L34" title="All 2 branches covered.">        if (user == null) return null;</span>
+
+<span class="fc" id="L36">        Book book = books.keySet().stream().filter(b -&gt; b.getIsbn().equals(isbn)).findFirst().orElse(null);</span>
+<span class="pc bpc" id="L37" title="1 of 4 branches missed.">        if (book == null || books.get(book) &lt;= 0) return null;</span>
+
+<span class="fc" id="L39">        boolean hasActiveLoan = loans.stream().anyMatch(l -&gt;</span>
+<span class="fc bfc" id="L40" title="All 2 branches covered.">                l.getUser().getId().equals(userId) &amp;&amp;</span>
+<span class="pc bpc" id="L41" title="1 of 2 branches missed.">                        l.getBook().getIsbn().equals(isbn) &amp;&amp;</span>
+<span class="pc bpc" id="L42" title="1 of 2 branches missed.">                        l.getStatus() == LoanStatus.ACTIVE</span>
+        );
+<span class="fc bfc" id="L44" title="All 2 branches covered.">        if (hasActiveLoan) return null;</span>
+
+<span class="fc" id="L46">        books.put(book, books.get(book) - 1);</span>
+
+<span class="fc" id="L48">        Loan loan = new Loan();</span>
+<span class="fc" id="L49">        loan.setBook(book);</span>
+<span class="fc" id="L50">        loan.setUser(user);</span>
+<span class="fc" id="L51">        loan.setLoanDate(LocalDateTime.now());</span>
+<span class="fc" id="L52">        loan.setStatus(LoanStatus.ACTIVE);</span>
+<span class="fc" id="L53">        loans.add(loan);</span>
+<span class="fc" id="L54">        return loan;</span>
+    }
+
+    public Loan returnLoan(Loan loan) {
+<span class="fc bfc" id="L58" title="All 2 branches covered.">        if (loan == null) return null;</span>
+<span class="pc bpc" id="L59" title="1 of 2 branches missed.">        if (!loans.contains(loan)) return null;</span>
+
+<span class="fc" id="L61">        books.put(loan.getBook(), books.get(loan.getBook()) + 1);</span>
+<span class="fc" id="L62">        loan.setStatus(LoanStatus.RETURNED);</span>
+<span class="fc" id="L63">        loan.setReturnDate(LocalDateTime.now());</span>
+<span class="fc" id="L64">        return loan;</span>
+    }
+
+    public boolean addUser(User user) {
+<span class="fc" id="L68">        return users.add(user);</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>
